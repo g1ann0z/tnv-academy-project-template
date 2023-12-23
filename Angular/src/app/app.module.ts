@@ -23,6 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MovieService } from './movie.service';
+import { FilmDetailComponent } from './components/film-detail/film-detail.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,8 @@ import { MovieService } from './movie.service';
     RankingsComponent,
     SearchComponent,
     TrendingSectionComponent,
-    FilmCardComponent
+    FilmCardComponent,
+    FilmDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { MovieService } from './movie.service';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

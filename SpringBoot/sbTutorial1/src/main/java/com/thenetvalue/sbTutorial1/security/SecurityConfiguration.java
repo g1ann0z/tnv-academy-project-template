@@ -51,7 +51,7 @@ public class SecurityConfiguration {
     //Alternativo a metodo sopra
     @Bean    //viene fatto autowired atomatico grazie a @Bean
     public UserDetailsManager users(DataSource dataSource) {
-        JdbcUserDetailsManager judm = new  JdbcUserDetailsManager(dataSource);//permette di usare libreria jdbc per fare chiamate alle tabelle
+        JdbcUserDetailsManager judm = new JdbcUserDetailsManager(dataSource);//permette di usare libreria jdbc per fare chiamate alle tabelle
 /*
         UserDetails user = User
 
@@ -73,7 +73,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
@@ -96,7 +96,7 @@ public class SecurityConfiguration {
 
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource(){
+    CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         configuration.setAllowCredentials(false);
@@ -107,7 +107,6 @@ public class SecurityConfiguration {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
 
 
     @Bean
