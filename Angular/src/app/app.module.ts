@@ -15,7 +15,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RankingsComponent } from './components/rankings/rankings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './@shared/modules/angular-material/angular-material.module';
-import { SearchComponent } from './components/search/search.component';
 import { TrendingSectionComponent } from './components/trending-section/trending-section.component';
 import { FilmCardComponent } from './components/film-card/film-card.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MovieService } from './movie.service';
+import { SearchComponent } from './components/search/search.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +35,10 @@ import { MovieService } from './movie.service';
     WelcomeComponent,
     ProfileComponent,
     RankingsComponent,
-    SearchComponent,
     TrendingSectionComponent,
-    FilmCardComponent
+    FilmCardComponent,
+    SearchComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

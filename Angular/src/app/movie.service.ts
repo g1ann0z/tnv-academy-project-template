@@ -18,11 +18,24 @@ export class MovieService {
     return this.httpClient.get(url);
   }
 
-  getMoviesByCast(castMember: String): Observable<any> {
-    const url = `${this.apyUrl}/discover/movie?with_cast=${castMember}&api_key=${this.apiKey}`;
+  getMoviesByActor(actor: String): Observable<any> {
+    const url = `${this.apyUrl}/search/keyword${actor}&api_key=${this.apiKey}`;
     return this.httpClient.get(url);
   }
 
+
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer a4388ed2eb6c9ab9626cf48b1a8bfe8b'
+    }
+  };
+  
+  fetch('https://api.themoviedb.org/3/search/keyword?query=babe&page=1', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
 }
 
 /*

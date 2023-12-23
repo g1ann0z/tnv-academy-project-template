@@ -1,32 +1,17 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
-import { MovieService } from 'src/app/movie.service';
-
-/**
- * @title Input with hints
- */
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'tnv-search',
   templateUrl: './search.component.html',
-  styleUrl: './search.component.scss',
-  standalone: false
-  
+  styleUrl: './search.component.scss'
 })
+export class SearchComponent {
 
-
-export class SearchComponent implements OnInit{
-
-  constructor(private movieService: MovieService) { }
-
-  ngOnInit(): void {
+   // @Input() name ='';
+    @Output() newSearchEvent = new EventEmitter<string>();
     
-  }
+    searchByActor(actor: string){
+        this.newSearchEvent.emit(actor);
+    }
 
-  getMoviesByCast(castMember: String): Observable<any> {
-    this.movieService.getMoviesByCast
-    return this.httpClient.get(url);
-  }
 }

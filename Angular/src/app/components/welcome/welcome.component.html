@@ -1,22 +1,10 @@
 <div class="row mt-3">
   <div class="col-12">
     <h5>Cosa ti va di vedere oggi?</h5>
-    <tnv-search></tnv-search>
+    <tnv-search (newSearchEvent)="searchByActor($event)"></tnv-search><!--Capire meglio il binding-->
+    <tnv-search-result [currentSearch]="currentSearch"></tnv-search-result>
     <tnv-trending-section></tnv-trending-section>
-    <!-- <ol>
-      <li> Fate una riunione di team, capite se qualcosa non è chiaro nel progetto e capite come organizzarvi</li>
-      <li> Create un repo di test e fate prove per capire se tutti hanno chiaro come si collabora sul repo usando i branch</li>
-      <li> Se ci sono dubbi chiariamoli subito nell’apposito gruppo</li>
-      <li> Fate un moodboard: partite da una o più foto ed estraete i colori, scegliete la palette, i font, restate minimali e senza fronzoli: meno codice, meno bug.</li>
-      <li> Iniziate a progettare l’interfaccia in modo schematico prima di scrivere una singola riga di codice.</li>
-      <li> Capite i flussi dell’utente: dove atterra dopo il login? Come accede alle sezioni? Quante pagine ci sono?</li>
-      <li> Definite il modello dei dati: che risorse/tabelle ci servono? Quali sono le loro relazioni?</li>
-      <li> Dividetevi i compiti, capendo gli impegni di ognuno e fissando almeno un meeting di allineamento al giorno. </li>
-      <li> Iniziate a sviluppare l’interfaccia angular da subito e create le entità su node/mysql solo quando servono.</li>
-      <li> Potete mockare le response direttamente nei servizi angular per fare i test</li>
-      <li> Ogni volta che sviluppate un pezzetto, integrate su git e testatelo, non facciamo tutto all’ultimo momento!</li>
-      <li>Quando siete bloccati provate a cercare sulla documentazione, su stack overflow, cercate di capire le soluzioni prima di copiaincollarle :) Ma se proprio non riuscite, non restate fermi, chiedete un tutoraggio</li>
-    </ol> -->
+
   </div>
   
 </div>
