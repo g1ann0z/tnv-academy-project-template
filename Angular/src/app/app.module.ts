@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MovieService } from './movie.service';
 import { FilmDetailComponent } from './components/film-detail/film-detail.component';
 import { MatSelectModule } from '@angular/material/select';
+import { GenreService } from './genre.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatSelectModule,
   ],
-  providers: [MovieService],
+  providers: [MovieService , GenreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

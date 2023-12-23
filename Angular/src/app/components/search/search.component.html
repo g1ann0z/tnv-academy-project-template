@@ -18,16 +18,14 @@
   </mat-form-field>
   
   <mat-form-field>
-    <mat-label>Select an option</mat-label>
-    <mat-select [(value)]="selectedTag">
-      <mat-option value="All">All tags</mat-option>
-      <mat-option value="option1">Option 1</mat-option>
-      <mat-option value="option2">Option 2</mat-option>
-      <mat-option value="option3">Option 3</mat-option>
+    <mat-label for="filmTagSelected">Select a tag</mat-label>
+    <mat-select id="filmTagSelected" (selectionChange)="onTagChange($event)">
+      <mat-option value="0">All tags</mat-option>
+      <mat-option value="28">Action</mat-option>
+      <mat-option value="12">Adventure</mat-option>
+      <mat-option value="14">Fantasy</mat-option>
     </mat-select>
   </mat-form-field>
   
-  <p>You selected: {{selectedTag}}</p>
-  
-  <tnv-trending-section [selectedLanguage]="selectedLanguage"></tnv-trending-section>
+  <tnv-trending-section [selectedLanguage]="selectedLanguage" [selectedGenre]="selectedGenre"></tnv-trending-section>
 
