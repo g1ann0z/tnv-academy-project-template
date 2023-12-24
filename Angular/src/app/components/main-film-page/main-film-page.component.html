@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12 pt-5 pb-2">
+        <h3>Our catalogue</h3>
+      </div>
+  
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-2 py-2" *ngFor="let movie of thisYearMovies">
+            <tnv-film-card [movie]="movie"></tnv-film-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

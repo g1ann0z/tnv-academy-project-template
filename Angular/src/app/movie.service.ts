@@ -17,4 +17,10 @@ export class MovieService {
     const url = `${this.apyUrl}/movie/popular?api_key=${this.apiKey}`;
     return this.httpClient.get(url);
   }
+
+  getThisYearMovies(startYear: number, endYear: number): Observable<any>{
+    const url = `${this.apyUrl}/discover/movie?api_key=${this.apiKey}&primary_release_date.gte=${startYear}-01-01&primary_release_date.lte=${endYear}-12-31`;
+    return this.httpClient.get(url);
+  }
 }
+

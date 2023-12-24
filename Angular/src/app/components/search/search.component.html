@@ -6,26 +6,4 @@
       <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
     </mat-form-field>
   </form>
-
-   <mat-form-field>
-    <mat-label for="filmLanguageSelect">Select film language</mat-label>
-    <mat-select id="filmLanguageSelect" (selectionChange)="onLanguageChange($event)">
-      <mat-option value="All">All</mat-option>
-      <mat-option value="en">English</mat-option>
-      <mat-option value="ja">Japanase</mat-option>
-       <mat-option value="option3">200</mat-option>
-     </mat-select>
-  </mat-form-field>
   
-  <mat-form-field>
-    <mat-label for="filmTagSelected">Select a tag</mat-label>
-    <mat-select id="filmTagSelected" (selectionChange)="onTagChange($event)">
-      <mat-option value="0">All tags</mat-option>
-      <mat-option value="28">Action</mat-option>
-      <mat-option value="12">Adventure</mat-option>
-      <mat-option value="14">Fantasy</mat-option>
-    </mat-select>
-  </mat-form-field>
-  
-  <tnv-trending-section [selectedLanguage]="selectedLanguage" [selectedGenre]="selectedGenre"></tnv-trending-section> 
-
