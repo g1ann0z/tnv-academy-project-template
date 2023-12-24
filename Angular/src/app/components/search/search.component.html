@@ -7,14 +7,14 @@
     </mat-form-field>
   </form>
 
-  <mat-form-field>
+   <mat-form-field>
     <mat-label for="filmLanguageSelect">Select film language</mat-label>
     <mat-select id="filmLanguageSelect" (selectionChange)="onLanguageChange($event)">
       <mat-option value="All">All</mat-option>
       <mat-option value="en">English</mat-option>
       <mat-option value="ja">Japanase</mat-option>
-      <!-- <mat-option value="option3">200</mat-option> -->
-    </mat-select>
+       <mat-option value="option3">200</mat-option>
+     </mat-select>
   </mat-form-field>
   
   <mat-form-field>
@@ -27,5 +27,5 @@
     </mat-select>
   </mat-form-field>
   
-  <tnv-trending-section [selectedLanguage]="selectedLanguage" [selectedGenre]="selectedGenre"></tnv-trending-section>
+  <tnv-trending-section [selectedLanguage]="selectedLanguage" [selectedGenre]="selectedGenre"></tnv-trending-section> 
 

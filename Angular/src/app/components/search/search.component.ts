@@ -18,16 +18,16 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 export class SearchComponent {
-  selectedLanguage: string = 'All';
-  selectedGenre: number | undefined;
+   selectedLanguage: string = 'All';
+   selectedGenre: number | undefined;
 
-  onLanguageChange(event: any): void{
-    console.log('Selected Language:', event.value);
-    this.selectedLanguage = event.value;
-  }
+   onLanguageChange(event: any): void{
+     console.log('Selected Language:', event.value);
+     this.selectedLanguage = event.value;
+   }
 
-  onTagChange(event: any): void{
-    console.log('Selected Genre:', event.value);
-    this.selectedGenre = event.value === '0' ? undefined : event.value;
-  }
+   onTagChange(event: any): void{
+     console.log('Selected Genre:', event.value);
+     this.selectedGenre = event.value === '0' ? undefined : event.value;
+   }
 }
