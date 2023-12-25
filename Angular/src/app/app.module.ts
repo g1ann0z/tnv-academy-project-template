@@ -24,6 +24,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MovieService } from './movie.service';
 import { MainFilmPageComponent } from './components/main-film-page/main-film-page.component';
+import { CatalogueFiltersComponent } from './components/catalogue-filters/catalogue-filters.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import { MainFilmPageComponent } from './components/main-film-page/main-film-pag
     SearchComponent,
     TrendingSectionComponent,
     FilmCardComponent,
-    MainFilmPageComponent
+    MainFilmPageComponent,
+    CatalogueFiltersComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,11 +51,12 @@ import { MainFilmPageComponent } from './components/main-film-page/main-film-pag
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

@@ -1,0 +1,22 @@
+<mat-form-field>
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="defaultLanguage" (selectionChange)="getFilteredMovies()">
+      <mat-option value="en">English</mat-option>
+      <mat-option value="es">Spanish</mat-option>
+      <mat-option value="ko">Korean</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select a date:</mat-label>
+    <mat-select [(value)]="selectedDate" (selectionChange)="getFilteredMoviesByDate()">
+      <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select a genre:</mat-label>
+    <mat-select [(value)]="selectedGenreId" (selectionChange)="onGenreSelectionChange()">
+      <mat-option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
