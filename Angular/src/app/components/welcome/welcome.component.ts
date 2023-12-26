@@ -1,28 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { SearchComponent } from '../search/search.component';
-import { TrendingSectionComponent } from '../trending-section/trending-section.component';
-import { MovieService } from 'src/app/movie.service';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from "@angular/core";
+import { SearchComponent } from "../search/search.component";
+import { TrendingSectionComponent } from "../trending-section/trending-section.component";
+import { MovieService } from "src/app/movie.service";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'tnv-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss']
+	selector: "tnv-welcome",
+	templateUrl: "./welcome.component.html",
+	styleUrls: ["./welcome.component.scss"],
 })
 export class WelcomeComponent implements OnInit {
+	currentSearch: string = "";
+	public moviesByTitle: any[];
 
-  //currentName = 'Paolino'; -lato html [name]="currentName" 
-  currentSearch = '';
-  
+	constructor(private movieService: MovieService) {
+		this.moviesByTitle = [];
+	}
 
-  constructor(private movieService: MovieService) { }
+	ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  searchByActor(actor: string){
-    this.currentSearch=actor;
-  }
-
-
+	searchByTitle(title: string) {
+		this.currentSearch = title;
+		this.movieService.getMoviesByTitle(this.currentSearch).subscribe({
+			next: (response) => {
+				console.log(this.moviesByTitle);
+				this.moviesByTitle = response.results;
+			},
+			error: (err) => console.log(err),
+		});
+	}
 }

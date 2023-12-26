@@ -7,11 +7,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent {
 
-   // @Input() name ='';
     @Output() newSearchEvent = new EventEmitter<string>();
     
-    searchByActor(actor: string){
-        this.newSearchEvent.emit(actor);
+    searchByTitle(title: string){
+        this.newSearchEvent.emit(title);
     }
 
 }

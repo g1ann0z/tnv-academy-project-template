@@ -8,14 +8,13 @@ import { error } from "console";
 	styleUrl: "./search-result.component.scss",
 })
 export class SearchResultComponent implements OnInit {
-	@Input() currentSearch = '';
-  moviesByActor = [];
-	constructor(private movieService: MovieService) {}
+	@Input() moviesByTitle!: any[];
+
+	constructor(private movieService: MovieService) {
+
+	}
 
 	ngOnInit() {
-		this.movieService.getMoviesByActor(this.currentSearch).subscribe(data =>{
-			this.moviesByActor = data.results;
-      //error: (err) => console.log(err)
-		});
+
 	}
 }
