@@ -1,3 +1,17 @@
-<label for="item-input">Inserisci il nome da cercare:</label>
+<!--<label for="item-input">Cerca per titolo</label>
 <input type="text" id="item-input" #newInput>
 <button type="button" (click)="searchByTitle(newInput.value)">Cerca</button>
+-->
+
+
+<form class="example-form">
+  
+  <div class="row row-cols-2 row-cols-xl-4 g-4" id="titleSearch">
+  <label>Cerca per titolo</label>
+    <mat-form-field class="example-full-width">
+      <mat-label>Message</mat-label>
+      <input matInput #title maxlength="256" placeholder="Ex. I need help with...">
+    </mat-form-field>
+    <button type="button" (click)="searchByTitle(title.value)">Cerca</button>
+  </div>
+</form>

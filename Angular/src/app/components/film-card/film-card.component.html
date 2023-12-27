@@ -31,13 +31,14 @@
   </mat-card> -->
 
   <mat-card class="example-card">
+    <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+
     <mat-card-header>
       <mat-card-title>{{ movie.title }}</mat-card-title>
       <mat-card-subtitle>{{ movie.release_date }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
     <mat-card-content>
-      {{ movie.overview }}
+     <!-- {{ movie.overview }}-->
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>Mi piace</button>
