@@ -1,3 +1,4 @@
+<!-- Old V
 <div class="container">
 	<div class="row">
 		<div class="col-12 pt-5 pb-2">
@@ -16,3 +17,53 @@
 		</div>
 	</div>
 </div>
+-->
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet"
+/>
+
+<section class="timeline_area section_padding_130">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-8 col-lg-6">
+				<!-- Section Heading-->
+				<div class="section_heading text-center">
+					<!-- <h6>Our History</h6> -->
+					<h3>Risultati</h3>
+					<div class="line"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<!-- Timeline Area-->
+				<div class="apland-timeline-area">
+					<!--Single Timeline Content-->
+					<div class="single-timeline-area" *ngFor="let year of yearsOfMoviesByTitle">
+						<div
+							class="timeline-date wow fadeInLeft"
+							data-wow-delay="0.1s"
+							style="
+								visibility: visible;
+								animation-delay: 0.1s;
+								animation-name: fadeInLeft;
+							"
+						>
+							<p>{{year}}</p>
+						</div>
+						<div class="row">
+							<div
+								class="col-12 col-sm-6 col-md-4 col-lg-2 py-2"
+								*ngFor="let movie of moviesByTitle"
+							>
+								<tnv-film-card [movie]="movie"></tnv-film-card>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
