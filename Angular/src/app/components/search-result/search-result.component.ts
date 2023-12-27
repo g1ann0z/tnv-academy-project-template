@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { MovieService } from "../movie.service";
+import { MovieService } from "../../movie.service";
 import { error } from "console";
 
 @Component({
@@ -10,7 +10,7 @@ import { error } from "console";
 export class SearchResultComponent implements OnInit {
 	@Input() moviesByTitle!: any[];
 
-	constructor(private movieService: MovieService) {
+	constructor() {
 
 	}
 

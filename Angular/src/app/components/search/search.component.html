@@ -9,9 +9,10 @@
   <div class="row row-cols-2 row-cols-xl-4 g-4" id="titleSearch">
   <label>Cerca per titolo</label>
     <mat-form-field class="example-full-width">
-      <mat-label>Message</mat-label>
-      <input matInput #title maxlength="256" placeholder="Ex. I need help with...">
+      <mat-label>Titolo</mat-label>
+      <input matInput #title maxlength="256" placeholder="Ex. Harry Potter...">
     </mat-form-field>
     <button type="button" (click)="searchByTitle(title.value)">Cerca</button>
   </div>
 </form>
+

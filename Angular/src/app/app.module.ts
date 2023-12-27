@@ -23,7 +23,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MovieService } from './movie.service';
 import { SearchComponent } from './components/search/search.component';
-import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { SearchNewComponent } from './components/search-new/search-new.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +43,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     TrendingSectionComponent,
     FilmCardComponent,
     SearchComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    SearchNewComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,11 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule, 
+    MatIconModule,
+    MatDatepickerModule,        
+    MatNativeDateModule        
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

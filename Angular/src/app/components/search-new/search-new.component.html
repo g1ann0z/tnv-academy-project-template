@@ -1,0 +1,29 @@
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ricerca
+        </mat-panel-title>
+      <!--  <mat-panel-description>
+          Type your name and age
+          <mat-icon>account_circle</mat-icon> 
+        </mat-panel-description>-->
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <mat-label>Titolo</mat-label>
+        <input matInput #title maxlength="256" placeholder="Ex. Harry Potter...">
+      </mat-form-field>
+  <!--
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="1">
+      </mat-form-field>
+      -->
+      <mat-action-row>
+        <button mat-button color="primary" (click)="searchByTitle(title.value)">Cerca</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  

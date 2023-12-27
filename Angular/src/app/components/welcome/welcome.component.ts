@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { SearchComponent } from "../search/search.component";
+import { SearchNewComponent } from "../search-new/search-new.component";
+import {MatExpansionModule} from '@angular/material/expansion';
 import { TrendingSectionComponent } from "../trending-section/trending-section.component";
 import { MovieService } from "src/app/movie.service";
 import { Observable } from "rxjs";
