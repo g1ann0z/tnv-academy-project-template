@@ -35,7 +35,8 @@
   <img mat-card-image *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
   <mat-card-actions>
     <button mat-button>Mi piace</button>
-    <button mat-button>Vota</button>
+    <button mat-button (click)="showRating = !showRating">Vota</button>
+    
   </mat-card-actions>
   <mat-card-header>
     <mat-card-title>{{ movie.title }}</mat-card-title>
@@ -44,6 +45,9 @@
   <mat-card-content>
     
   </mat-card-content>
+  <td *ngIf="showRating">
+    <ngb-rating [(rate)]="userRating" [max]="5" (rateChange)="userRatingChange($event)"></ngb-rating>
+  </td>
 
 </mat-card>
 

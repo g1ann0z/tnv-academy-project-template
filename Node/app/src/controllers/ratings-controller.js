@@ -38,7 +38,7 @@ export const updateRating = async (req, res) => {
     try {
         const rating = await Rating.update(req.body, {
             where: {
-                id: req.params.id
+                movieId: req.params.movieId
             }
         });
         res.json({

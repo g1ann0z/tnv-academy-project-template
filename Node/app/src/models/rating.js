@@ -5,10 +5,10 @@ const { DataTypes } = Sequelize;
 
 const Rating = db.define('ratings', {
   userId: {
-    type: DataTypes.STRING
+    type: DataTypes.INTEGER
   },
   movieId: {
-    type: DataTypes.STRING
+    type: DataTypes.INTEGER
   },
   movieTitle: {
     type: DataTypes.STRING

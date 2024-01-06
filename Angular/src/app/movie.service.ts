@@ -11,6 +11,7 @@ import { of } from 'rxjs';
 export class MovieService {
   private apiKey = '363a63846c046b7a3c0d656f3881759b';
   private apiUrl = 'https://api.themoviedb.org/3';
+  private nodeUrl = 'http://localhost:1234/api';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -90,7 +91,23 @@ export class MovieService {
     console.log("Service URL:", url);
     return this.httpClient.get(url);
   }
+
+  getMovieForRating(userId: number | undefined, movieId: number){
+    const url = `${this.nodeUrl}/rating/${userId}/${movieId}`;
+    return this.httpClient.get(url)
+  }
   
+  postRating(ratingDetails: any): Observable<any> {
+    const url = `${this.nodeUrl}/rating`;
+    console.log('Chiamato saveRating con i dettagli:', ratingDetails);
+    return this.httpClient.post(url, ratingDetails);
+  }
+
+  patchRating(userId: number | undefined, movieId: number, rating: number): Observable<any> {
+    const url = `${this.nodeUrl}/rating/${movieId}`;
+    console.log("tutto ok", userId, movieId, rating)
+    return this.httpClient.patch(url, { rating });
+}
 
   getMoviesByTitle(title: String): Observable<any> {
     let url = `${this.apiUrl}/search/movie?query=${title}&api_key=${this.apiKey}`;
