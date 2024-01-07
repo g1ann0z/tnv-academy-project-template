@@ -92,9 +92,9 @@ export class MovieService {
     return this.httpClient.get(url);
   }
 
-  getMovieForRating(userId: number | undefined, movieId: number){
-    const url = `${this.nodeUrl}/rating/${userId}/${movieId}`;
-    return this.httpClient.get(url)
+  getAllRatings(userId: number | undefined): Observable<any> {
+    const url = `${this.nodeUrl}/rating/${userId}`;
+    return this.httpClient.get<any[]>(url);
   }
   
   postRating(ratingDetails: any): Observable<any> {

@@ -37,27 +37,6 @@ export class FilmCardComponent implements OnInit {
     }
   }
 
-  userRatingChange(newRating: number) {
-    console.log('Nuovo rating:', newRating);
-    this.userRating = newRating;
-  
-    // Verifica se l'utente è autenticato prima di salvare la valutazione
-    if (this.userId) {
-        // Se movieId non è presente, invia come POST
-        this.patchRating();
-    } else {
-      console.error('L\'utente non è autenticato. Impossibile salvare la valutazione.');
-    }
-  }
-
-  toggleRating() {
-    this.showRating = !this.showRating;
-    // Invia il rating al backend solo se è stato assegnato un voto dall'utente
-    if (this.showRating && this.userRating > 0) {
-      this.postRating();
-    }
-  }
-
   postRating() {
     // Chiama il servizio per inviare il rating al backend
     this.movieService.postRating({
@@ -88,6 +67,44 @@ export class FilmCardComponent implements OnInit {
       },
       () => {
         console.log('Chiamata completata'); // Aggiunto per debug
+      }
+    );
+  }
+  userRatingChange(newRating: number) {
+    console.log('Nuovo rating:', newRating);
+    this.userRating = newRating;
+  
+    // Verifica se l'utente è autenticato prima di salvare la valutazione
+    if (this.userId) {
+      this.getRatingForMovie(this.userId, this.movie.id);
+    } else {
+      console.error('L\'utente non è autenticato. Impossibile salvare la valutazione.');
+    }
+  }
+  
+  getRatingForMovie(userId: number, movieId: number): void {
+    this.movieService.getAllRatings(userId).subscribe(
+      (ratings: any[]) => {
+        console.log('MovieId da cercare:', movieId);
+        console.log('Ratings:', ratings);
+  
+        let movieFound = false;
+  
+        for (const rating of ratings) {
+          console.log('Rating corrente:', rating);
+          if (Number(rating.movieId) === movieId) {
+            movieFound = true;
+            this.patchRating();
+            break;
+          }
+        }
+  
+        if (!movieFound) {
+          this.postRating();
+        }
+      },
+      error => {
+        console.error('Errore durante il recupero dei rating dell\'utente:', error);
       }
     );
   }
