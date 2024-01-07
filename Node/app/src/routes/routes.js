@@ -11,7 +11,7 @@ router.get(`${API_ROOT}/rating/:userId/:movieId`, getRating);
 router.get(`${API_ROOT}/rating/:userId`, getAllRating);
 router.post(`${API_ROOT}/rating`, createRating);
 router.patch(`${API_ROOT}/rating/:movieId`, updateRating);
-router.delete(`${API_ROOT}/rating/:id`, deleteRating);
+router.delete(`${API_ROOT}/rating/:userId/:movieId`, deleteRating);
 
 router.post(`${API_ROOT}/review`, createReview);
 

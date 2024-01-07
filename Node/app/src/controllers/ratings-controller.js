@@ -70,7 +70,8 @@ export const deleteRating = async (req, res) => {
     try {
         await Rating.destroy({
             where: {
-                id: req.params.id
+                userId: req.params.userId,
+                movieId: req.params.movieId,
             }
         });
         res.json({

@@ -70,6 +70,21 @@ export class FilmCardComponent implements OnInit {
       }
     );
   }
+
+  deleteRating(){
+    this.movieService.deleteRating(this.userId, this.movie.id).subscribe(
+      (response) => {
+        console.log('Rating eliminato con successo', response);
+      },
+      (error) => {
+        console.error('Errore durante l\'eliminazione del rating', error);
+      },
+      () => {
+        console.log('Chiamata completata'); // Aggiunto per debug
+      }
+    );
+  }
+  
   userRatingChange(newRating: number) {
     console.log('Nuovo rating:', newRating);
     this.userRating = newRating;

@@ -47,6 +47,7 @@
   </mat-card-content>
   <td *ngIf="showRating">
     <ngb-rating [(rate)]="userRating" [max]="5" (rateChange)="userRatingChange($event)"></ngb-rating>
+    <button type="button" class="btn-close" aria-label="Close" (click)="deleteRating()"></button>
   </td>
 
 </mat-card>

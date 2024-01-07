@@ -105,9 +105,15 @@ export class MovieService {
 
   patchRating(userId: number | undefined, movieId: number, rating: number): Observable<any> {
     const url = `${this.nodeUrl}/rating/${movieId}`;
-    console.log("tutto ok", userId, movieId, rating)
+    console.log("tutto ok", userId, movieId, rating);
     return this.httpClient.patch(url, { rating });
-}
+  }
+
+  deleteRating(userId: number | undefined, movieId: number): Observable<any> {
+    const url = `${this.nodeUrl}/rating/${userId}/${movieId}`;
+    console.log("Invio richiesta di eliminazione con userId:", userId, "e movieId:", movieId);
+    return this.httpClient.delete(url);
+  }
 
   getMoviesByTitle(title: String): Observable<any> {
     let url = `${this.apiUrl}/search/movie?query=${title}&api_key=${this.apiKey}`;
