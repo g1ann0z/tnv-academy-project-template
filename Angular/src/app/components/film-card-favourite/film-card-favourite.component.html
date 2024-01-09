@@ -7,3 +7,29 @@
     <h5>{{ movie.movieTitle }}</h5>
   </mat-card-header>
 </mat-card>
+<mat-accordion class="example-headers-align" id="search-panel">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>Review</b>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+        <mat-form-field >
+          <mat-label>Scrivi (max. 160 caratteri)</mat-label>
+          <input
+            matInput
+            #review
+            maxlength="160"
+          />
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onAddReview(review.value)"
+          
+        >
+   
+          Salva
+        </button>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { of } from 'rxjs';
 import { Filter } from './models/filter';
 import { AuthService } from './@core/services/auth.service';
+import { Review } from './models/review';
 
 
 @Injectable({
@@ -70,6 +71,27 @@ export class MovieService {
 
     return this.httpClient.delete(url);
   }
+
+  addReview(review: Review): Observable<any>{
+    //console.log("chiamata addToFavourites su movie.service");
+    const userId = this.authService.getCurrentUserId();
+    const movieId=review.movieId;
+    const text=review.text;
+    console.log("Service review" , review);
+ 
+    if (!userId) {
+      throw new Error('ID utente non disponibile.');
+    }
+
+  
+    const url = `http://localhost:1234/api/review`;
+    const body = {userId,movieId,text};
+  
+    return this.httpClient.post(url, body);
+  }
+
+
+
 
   //funzione che chiama i film trend del momento
   getTrendingMovies(): Observable<any> {

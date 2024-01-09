@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/@core/services/auth.service';
+import { Review } from 'src/app/models/review';
 import { MovieService } from 'src/app/movie.service';
 
 @Component({
@@ -49,4 +50,15 @@ export class FavouritesComponent implements OnInit {
       }
     }
   }
+
+  addReview(review: Review){
+    this.movieService.addReview(review).subscribe({
+			next: (response) => {
+				console.log(response);
+			},
+			error: (err) => console.log(err),
+		});
+  }
+
+
 }

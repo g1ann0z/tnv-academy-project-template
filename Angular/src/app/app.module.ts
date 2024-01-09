@@ -35,6 +35,7 @@ import { SearchFinalComponent } from './components/search-final/search-final.com
 import { FilmCardTimelineComponent } from './components/film-card-timeline/film-card-timeline.component';
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { FilmCardFavouriteComponent } from './components/film-card-favourite/film-card-favourite.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { FilmCardFavouriteComponent } from './components/film-card-favourite/fil
     SearchFinalComponent,
     FilmCardTimelineComponent,
     FavouritesComponent,
-    FilmCardFavouriteComponent
+    FilmCardFavouriteComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +78,7 @@ import { FilmCardFavouriteComponent } from './components/film-card-favourite/fil
     MatExpansionModule,
     MatRadioModule, 
     MatSelectModule,
+    MatDialogModule,
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
