@@ -15,7 +15,9 @@ export class FilmCardTimelineComponent {
   @Input() movie: any;
 
   isMovieFavourite: boolean = false;
+  isReviewTextUndefined: boolean = true;
 
+  
   constructor(
     private movieService: MovieService,
     private snackBar: MatSnackBar
@@ -59,6 +61,7 @@ export class FilmCardTimelineComponent {
           duration: 3000,
         });
         this.isMovieFavourite = true;
+        //Qui possibile chiamata a inserimento review
       },
       (error) => {
         console.error('Errore durante l\'aggiunta ai preferiti', error);
