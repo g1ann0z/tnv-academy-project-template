@@ -1,13 +1,36 @@
 
 .login-card {
   width: 800px;
+
+  
+  @media only screen and (max-width: 768px){
+    width: 400px;
+  }
 }
 
 .img {
-  background-image: url('/assets/images/login-screen.jpg');
+  background-image: url('/assets/images/cinema2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
+  @media only screen and (max-width: 768px){
+    height: 200px;
+  }
+}
+
+button.submit {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e40f4c;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    background-color: lighten(#e40f4c, 10%);
+    transform: scale(1.1);
+  }
 }
 
 .wrap {
@@ -25,5 +48,3 @@
     height: 200px;
   }
 }
-
-
