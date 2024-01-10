@@ -66,3 +66,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 }
+
+h3 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #e40f4c;
+}
+
+h4, h6 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
