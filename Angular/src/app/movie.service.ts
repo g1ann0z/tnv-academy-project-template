@@ -72,9 +72,6 @@ export class MovieService {
     return this.httpClient.delete(url);
   }
 
-
-
-
   reviewExist(userId: number, movieId: number): Observable<any> {
     const url = `http://localhost:1234/api/review/${userId}/${movieId}`;
     return this.httpClient.get(url);
@@ -98,7 +95,19 @@ export class MovieService {
     return this.httpClient.post(url, body);
   }
 
+  deleteReview(userId: number, movieId: number): Observable<any> {
+    
+    console.log("SERVICE-REVIEW-DELETE",userId, movieId);
 
+    if (!userId) {
+      throw new Error('ID utente non disponibile.');
+    }
+    const url = `http://localhost:1234/api/review/${userId}/${movieId}`;
+    
+    console.log("SERVICE-REVIEW-DELETE-URL",url, userId, movieId);
+    console.log("HTTP-DEL",this.httpClient.delete(url));
+    return this.httpClient.delete(url);
+  }
 
 
   //funzione che chiama i film trend del momento

@@ -68,7 +68,18 @@ export class FavouritesComponent implements OnInit {
 		}
 	}
 
-
+  deleteReview(movieId: number){
+    const userId = this.authService.getCurrentUserId();
+    console.log("DELETE-REVIEW-CALL",movieId);
+    if(userId!=null){
+    this.movieService.deleteReview(userId,movieId).subscribe({
+			next: (response) => {
+        console.log('Review eliminata con successo', response);
+			},
+			error: (err) => console.log(err),
+		});
+  }
+  }
 
   ratingPost(movie : any) {
     this.rankingsService.postRating({

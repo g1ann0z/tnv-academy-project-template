@@ -15,7 +15,7 @@ export class FilmCardFavouriteComponent implements OnInit {
 
 	@Input() movie: any;
 	@Output() removeMovie = new EventEmitter();
-	//@Output() addReview = new EventEmitter();
+	@Output() deleteReview = new EventEmitter();
 
 	@Output() ratingDelete = new EventEmitter();
 	@Output() userRatingChange: EventEmitter<any> = new EventEmitter();
@@ -70,6 +70,11 @@ export class FilmCardFavouriteComponent implements OnInit {
 			error: (err) => console.log(err),
 		});
   }
+
+  onDeleteReview(){
+    this.deleteReview.emit(this.movie.movieId);
+  }
+
 
 	onRemoveRatingClick() {
 		this.ratingDelete.emit(this.movie.movieId);
