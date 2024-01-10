@@ -60,9 +60,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: block;
     width: 100%;
   }
-  nav, #trending-movies, #pdfBtn,#search-panel, #welcome-text{
+  nav, #noStamp, #trending-movies, #pdfBtn,#search-panel, #welcome-text{
     display: none !important;
   }
 
 
+}
+
+h3 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #e40f4c;
+}
+
+h4, h6 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

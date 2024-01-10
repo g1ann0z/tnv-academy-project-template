@@ -1,10 +1,31 @@
 .card-title{
-  padding-top: 10px;
+  padding-top: 4px;
 }
 
 .card-title, .card-text, .timeline-card-btn{
-  padding-left: 8px;
-  padding-right: 8px;
-  font-size: 12px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 18px;
 }
 
+.timeline-card-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+button {
+  margin: 6px;
+  padding: 4px 6px !important; 
+  font-size: 10px !important; 
+  border-radius: 6px; 
+  background-color: #e40f4c;
+  color: #fff !important;
+  border: none;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+
+  &:hover {
+    background-color: #e40f4c;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.5);
+  }
+}
