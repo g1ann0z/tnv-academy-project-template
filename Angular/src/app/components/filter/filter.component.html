@@ -12,6 +12,7 @@
     <mat-form-field>
       <mat-label>Genere</mat-label>
       <mat-select (selectionChange)="onGenreChange($event)">
+        <mat-option>Nessuno</mat-option>
         <mat-option value="28">Azione</mat-option>
         <mat-option value="12">Avventura</mat-option>
         <mat-option value="16">Animazione</mat-option>
@@ -32,15 +33,15 @@
       <mat-label>Popolarità</mat-label>
       <mat-select (selectionChange)="onPopularityChange($event)">
         <mat-option>Nessuno</mat-option>
-        <mat-option value="asc">Ascendente</mat-option>
-        <mat-option value="des">Discendente</mat-option>
+        <mat-option value="asc">Meno popolare</mat-option>
+        <mat-option value="des">Più popolare</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Durata film</mat-label>
       <mat-select (selectionChange)="onDurationChange($event)">
-        <mat-option>None</mat-option>
+        <mat-option>Nessuno</mat-option>
         <mat-option value="90">90</mat-option>
         <mat-option value="120">120</mat-option>
         <mat-option value="180">180</mat-option>

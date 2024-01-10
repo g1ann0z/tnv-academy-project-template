@@ -5,7 +5,10 @@ export const getRating = async (req, res) => {
         const ratings = await Rating.findAll({
             where: {
                 userId: req.params.userId,
-            }
+            },
+            order: [
+                ['rating', 'DESC']
+            ]
         });
         
         if (ratings.length > 0) {

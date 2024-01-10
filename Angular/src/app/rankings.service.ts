@@ -20,10 +20,8 @@ export class RankingsService {
     return this.httpClient.get<any[]>(url).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {
-          // Nessun rating trovato, restituisci un array vuoto
           return of([]);
         } else {
-          // Gestisci altri errori
           return throwError(error);
         }
       })
