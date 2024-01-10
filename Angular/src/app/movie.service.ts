@@ -72,6 +72,17 @@ export class MovieService {
     return this.httpClient.delete(url);
   }
 
+
+  checkIfReviewExist(userId: number, movieId: number): Observable<any> {
+    
+    const url = `http://localhost:1234/api/review`;
+    const body = {userId, movieId};
+    return this.httpClient.post(url, body);
+  }
+
+
+
+
   addReview(review: Review): Observable<any>{
     //console.log("chiamata addToFavourites su movie.service");
     const userId = this.authService.getCurrentUserId();

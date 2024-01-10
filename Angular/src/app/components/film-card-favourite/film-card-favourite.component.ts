@@ -23,7 +23,7 @@ export class FilmCardFavouriteComponent {
     review.movieId=this.movie.movieId;
     review.text=reviewText;
     this.addReview.emit(review);
-    console.log("Review-filmFavoComp", review);
+    //console.log("Review-filmFavoComp", review);
   }
 
     //codice relativo ad expansion panel dei filtri

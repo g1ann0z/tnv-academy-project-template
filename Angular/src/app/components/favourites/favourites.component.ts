@@ -4,61 +4,87 @@ import { Review } from 'src/app/models/review';
 import { MovieService } from 'src/app/movie.service';
 
 @Component({
-  selector: 'app-favourites',
-  templateUrl: './favourites.component.html',
-  styleUrls: ['./favourites.component.scss'],
+	selector: "app-favourites",
+	templateUrl: "./favourites.component.html",
+	styleUrls: ["./favourites.component.scss"],
 })
 export class FavouritesComponent implements OnInit {
-  favouriteMovies: any[] = [];
+	favouriteMovies: any[] = [];
+	reviewExist: boolean = false;
 
-  constructor(private movieService: MovieService, private authService: AuthService) { }
+	constructor(
+		private movieService: MovieService,
+		private authService: AuthService
+	) {}
 
-  ngOnInit(): void {
-    this.loadFavouriteMovies();
-  }
+	ngOnInit(): void {
+		this.loadFavouriteMovies();
+	}
 
-  removeMovie(movieId: number) {
-    //console.log("passo al service movieId ", movieId);
-    this.movieService.removeFromFavourites(movieId).subscribe(
-      () => {
-        // Rimuovere il film dall'array locale
-        this.favouriteMovies = this.favouriteMovies.filter((m) => m.id !== movieId);
-        this.loadFavouriteMovies(); //ricaricare pagina per eliminare card
-      },
-      (error) => {
-        console.error('Errore durante la rimozione del film dai preferiti', error);
-      }
-    );
-  }
-
-  private loadFavouriteMovies() {
-    {
-      const userId = this.authService.getCurrentUserId();
-
-      if (userId !== null) {
-        this.movieService.getFavouritesByUserId(userId).subscribe(
-          (favouriteMoviesResponse) => {
-            this.favouriteMovies = favouriteMoviesResponse;
-          },
-          (error) => {
-            console.error('Errore durante il recupero dei preferiti', error);
-
-          }
-        );
-      } else {
-        console.error('ID utente non disponibile.');
-      }
-    }
-  }
-
-  addReview(review: Review){
-    this.movieService.addReview(review).subscribe({
-			next: (response) => {
-				console.log(response);
+	removeMovie(movieId: number) {
+		//console.log("passo al service movieId ", movieId);
+		this.movieService.removeFromFavourites(movieId).subscribe(
+			() => {
+				// Rimuovere il film dall'array locale
+				this.favouriteMovies = this.favouriteMovies.filter(
+					(m) => m.id !== movieId
+				);
+				this.loadFavouriteMovies(); //ricaricare pagina per eliminare card
 			},
-			error: (err) => console.log(err),
-		});
-  }
+			(error) => {
+				console.error(
+					"Errore durante la rimozione del film dai preferiti",
+					error
+				);
+			}
+		);
+	}
 
+	private loadFavouriteMovies() {
+		{
+			const userId = this.authService.getCurrentUserId();
 
+			if (userId !== null) {
+				this.movieService.getFavouritesByUserId(userId).subscribe(
+					(favouriteMoviesResponse) => {
+						this.favouriteMovies = favouriteMoviesResponse;
+					},
+					(error) => {
+						console.error("Errore durante il recupero dei preferiti", error);
+					}
+				);
+			} else {
+				console.error("ID utente non disponibile.");
+			}
+		}
+	}
+
+	checkIfReviewExist(movieId: number, review: Review) {
+		console.log("dentro fav-comp checkIfReviewExist");
+		const userId = this.authService.getCurrentUserId();
+		if (userId !== null) {
+			this.movieService.checkIfReviewExist(userId, movieId).subscribe({
+				next: (response) => {
+					if (response !== null) {
+						this.reviewExist = true;
+						console.log(this.reviewExist);
+					} else {
+						this.addReview(review);
+					}
+				},
+				error: (err) => console.log(err),
+			});
+		}
+	}
+
+	addReview(review: Review) {
+		if (!this.reviewExist) {
+			this.movieService.addReview(review).subscribe({
+				next: (response) => {
+					console.log(response);
+				},
+				error: (err) => console.log(err),
+			});
+		}
+	}
 }
