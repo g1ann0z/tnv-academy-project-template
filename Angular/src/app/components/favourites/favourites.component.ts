@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/@core/services/auth.service';
+import { Review } from 'src/app/models/review';
 import { MovieService } from 'src/app/movie.service';
 import { RankingsService } from 'src/app/rankings.service';
 
 @Component({
-  selector: 'app-favourites',
-  templateUrl: './favourites.component.html',
-  styleUrls: ['./favourites.component.scss'],
+	selector: "app-favourites",
+	templateUrl: "./favourites.component.html",
+	styleUrls: ["./favourites.component.scss"],
 })
 export class FavouritesComponent implements OnInit {
   @Input() movie: any;
@@ -14,48 +15,85 @@ export class FavouritesComponent implements OnInit {
   showRating: boolean = false;
   userRating: number = 0;
   userId!: number | null; // Variabile per memorizzare l'ID dell'utente
-  favouriteMovies: any[] = [];
+	favouriteMovies: any[] = [];
+	reviewExist: boolean = false;
 
-  constructor(private movieService: MovieService, private authService: AuthService, private rankingsService: RankingsService) { }
+	constructor(
+		private movieService: MovieService,
+		private authService: AuthService
+	, private rankingsService: RankingsService) {}
 
-  ngOnInit(): void {
-    this.loadFavouriteMovies();
+	ngOnInit(): void {
+		this.loadFavouriteMovies();
     this.userId = this.authService.getCurrentUserId();
-  }
+	}
 
-  removeMovie(movieId: number) {
-    //console.log("passo al service movieId ", movieId);
-    this.movieService.removeFromFavourites(movieId).subscribe(
-      () => {
-        // Rimuovere il film dall'array locale
-        this.favouriteMovies = this.favouriteMovies.filter((m) => m.id !== movieId);
-        this.loadFavouriteMovies(); //ricaricare pagina per eliminare card
-      },
-      (error) => {
-        console.error('Errore durante la rimozione del film dai preferiti', error);
-      }
-    );
-  }
+	removeMovie(movieId: number) {
+		//console.log("passo al service movieId ", movieId);
+		this.movieService.removeFromFavourites(movieId).subscribe(
+			() => {
+				// Rimuovere il film dall'array locale
+				this.favouriteMovies = this.favouriteMovies.filter(
+					(m) => m.id !== movieId
+				);
+				this.loadFavouriteMovies(); //ricaricare pagina per eliminare card
+			},
+			(error) => {
+				console.error(
+					"Errore durante la rimozione del film dai preferiti",
+					error
+				);
+			}
+		);
+	}
 
-  private loadFavouriteMovies() {
-    {
-      const userId = this.authService.getCurrentUserId();
+	private loadFavouriteMovies() {
+		{
+			const userId = this.authService.getCurrentUserId();
 
-      if (userId !== null) {
-        this.movieService.getFavouritesByUserId(userId).subscribe(
-          (favouriteMoviesResponse) => {
-            this.favouriteMovies = favouriteMoviesResponse;
-          },
-          (error) => {
-            console.error('Errore durante il recupero dei preferiti', error);
+			if (userId !== null) {
+				this.movieService.getFavouritesByUserId(userId).subscribe(
+					(favouriteMoviesResponse) => {
+						this.favouriteMovies = favouriteMoviesResponse;
+					},
+					(error) => {
+						console.error("Errore durante il recupero dei preferiti", error);
+					}
+				);
+			} else {
+				console.error("ID utente non disponibile.");
+			}
+		}
+	}
 
-          }
-        );
-      } else {
-        console.error('ID utente non disponibile.');
-      }
-    }
-  }
+	checkIfReviewExist(movieId: number, review: Review) {
+		console.log("dentro fav-comp checkIfReviewExist");
+		const userId = this.authService.getCurrentUserId();
+		if (userId !== null) {
+			this.movieService.checkIfReviewExist(userId, movieId).subscribe({
+				next: (response) => {
+					if (response !== null) {
+						this.reviewExist = true;
+						console.log(this.reviewExist);
+					} else {
+						this.addReview(review);
+					}
+				},
+				error: (err) => console.log(err),
+			});
+		}
+	}
+
+	addReview(review: Review) {
+		if (!this.reviewExist) {
+			this.movieService.addReview(review).subscribe({
+				next: (response) => {
+					console.log(response);
+				},
+				error: (err) => console.log(err),
+			});
+		}
+	}
 
   ratingPost(movie : any) {
     this.rankingsService.postRating({
