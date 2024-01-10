@@ -46,11 +46,8 @@ export class SearchResultTimelineComponent  implements OnInit, OnChanges {
 
   //funzione per esportazione in pdf/png
   generatePDF(){
-    const pdfArea = document.getElementById('searchResult');
-    pdfArea?.addEventListener('click', function(){
-      window.print();
-    })
+    window.print();
   }
-
+  
 
 }
