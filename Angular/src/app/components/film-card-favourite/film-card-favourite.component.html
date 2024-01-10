@@ -1,7 +1,7 @@
 <mat-card class="example-card">
   <mat-card-actions>
     <div class="myRemoveButton">
-      <button mat-raised-button color="primary" (click)="onRemoveClick(); onRemoveRatingClick()">Rimuovi</button>
+      <button mat-raised-button color="primary" (click)="onRemoveClick(); onRemoveRatingClick(); onDeleteReview()">Rimuovi</button>
     </div>
     <button mat-icon-button id="myStarButton" (click)="onRatingButtonClick()">
       <mat-icon>star</mat-icon>
@@ -16,3 +16,31 @@
     <ngb-rating id="ratingButton" [rate]="ranking.rating" [max]="5" (rateChange)="onUserRatingChange($event)"></ngb-rating>
   </td>
 </mat-card>
+<mat-accordion class="col-xs-12 col-lg-5" id="review-panel">
+	<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(0)" hideToggle>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<b>Review</b>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+	<div *ngIf="reviewExist===false">	
+		<mat-form-field class="col-md-9" id="review-txt-area">
+			<mat-label>max. 160 caratteri</mat-label>
+			<input matInput #review maxlength="160" />
+		</mat-form-field>
+		
+			<button
+				mat-raised-button
+				color="primary"
+				(click)="addReview(review.value)"
+			>
+				Iserisci
+			</button>
+	</div>
+	<div *ngIf="reviewExist===true">
+		<p>
+			{{review.text}}
+		</p>
+	</div>
+	</mat-expansion-panel>
+</mat-accordion>

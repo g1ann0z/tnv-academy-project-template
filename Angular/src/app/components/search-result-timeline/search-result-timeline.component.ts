@@ -28,12 +28,12 @@ export class SearchResultTimelineComponent  implements OnInit, OnChanges {
   }
 
 	ngOnChanges() {
-    console.log(this.yearsOfMovies);
+   // console.log(this.yearsOfMovies);
 	}
 
   //filtra film per anno per vedere in timeline i film divisi per anno 
   filterMovieByYear = (year: string): string[] =>  {
-    console.log("ADESSO ", year, this.moviesList);
+    //console.log("ADESSO ", year, this.moviesList);
     let result = [];
     //console.log(year);
     for(let movie of this.moviesList){

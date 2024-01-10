@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { of } from 'rxjs';
 import { Filter } from './models/filter';
 import { AuthService } from './@core/services/auth.service';
+import { Review } from './models/review';
 
 
 @Injectable({
@@ -70,6 +71,44 @@ export class MovieService {
 
     return this.httpClient.delete(url);
   }
+
+  reviewExist(userId: number, movieId: number): Observable<any> {
+    const url = `http://localhost:1234/api/review/${userId}/${movieId}`;
+    return this.httpClient.get(url);
+
+  }
+
+  addReview(review: Review): Observable<any>{
+    //console.log("chiamata addToFavourites su movie.service");
+    const userId = this.authService.getCurrentUserId();
+    const movieId=review.movieId;
+    const text=review.text;
+    //console.log("Service review" , review);
+ 
+    if (!userId) {
+      throw new Error('ID utente non disponibile.');
+    }
+  
+    const url = `http://localhost:1234/api/review`;
+    const body = {userId,movieId,text};
+  
+    return this.httpClient.post(url, body);
+  }
+
+  deleteReview(userId: number, movieId: number): Observable<any> {
+    
+    console.log("SERVICE-REVIEW-DELETE",userId, movieId);
+
+    if (!userId) {
+      throw new Error('ID utente non disponibile.');
+    }
+    const url = `http://localhost:1234/api/review/${userId}/${movieId}`;
+    
+    console.log("SERVICE-REVIEW-DELETE-URL",url, userId, movieId);
+    console.log("HTTP-DEL",this.httpClient.delete(url));
+    return this.httpClient.delete(url);
+  }
+
 
   //funzione che chiama i film trend del momento
   getTrendingMovies(): Observable<any> {

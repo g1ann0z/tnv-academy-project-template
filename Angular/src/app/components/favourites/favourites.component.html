@@ -7,7 +7,7 @@
   <div class="col-12">
     <div class="row">
       <div class="col-12 col-md-4 col-lg-2 py-2" *ngFor="let movie of favouriteMovies">
-        <app-film-card-favourite [movie]="movie" (removeMovie)="removeMovie($event);  ratingDelete(movie)" (userRatingChange)="userRatingChange($event, movie)"></app-film-card-favourite>
+        <app-film-card-favourite [movie]="movie" (removeMovie)="removeMovie($event);  ratingDelete(movie); deleteReview($event)" (userRatingChange)="userRatingChange($event, movie)" ></app-film-card-favourite>
       </div>
     </div>
   </div>
