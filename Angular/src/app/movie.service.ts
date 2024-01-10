@@ -73,27 +73,24 @@ export class MovieService {
   }
 
 
-  checkIfReviewExist(userId: number, movieId: number): Observable<any> {
-    
-    const url = `http://localhost:1234/api/review`;
-    const body = {userId, movieId};
-    return this.httpClient.post(url, body);
+
+
+  reviewExist(userId: number, movieId: number): Observable<any> {
+    const url = `http://localhost:1234/api/review/${userId}/${movieId}`;
+    return this.httpClient.get(url);
+
   }
-
-
-
 
   addReview(review: Review): Observable<any>{
     //console.log("chiamata addToFavourites su movie.service");
     const userId = this.authService.getCurrentUserId();
     const movieId=review.movieId;
     const text=review.text;
-    console.log("Service review" , review);
+    //console.log("Service review" , review);
  
     if (!userId) {
       throw new Error('ID utente non disponibile.');
     }
-
   
     const url = `http://localhost:1234/api/review`;
     const body = {userId,movieId,text};

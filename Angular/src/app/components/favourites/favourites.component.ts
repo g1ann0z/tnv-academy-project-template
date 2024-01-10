@@ -16,17 +16,19 @@ export class FavouritesComponent implements OnInit {
   userRating: number = 0;
   userId!: number | null; // Variabile per memorizzare l'ID dell'utente
 	favouriteMovies: any[] = [];
-	reviewExist: boolean = false;
+ // review: Review | undefined;
 
 	constructor(
 		private movieService: MovieService,
-		private authService: AuthService
-	, private rankingsService: RankingsService) {}
+		private authService: AuthService,
+	  private rankingsService: RankingsService) {}
 
 	ngOnInit(): void {
 		this.loadFavouriteMovies();
     this.userId = this.authService.getCurrentUserId();
 	}
+
+   
 
 	removeMovie(movieId: number) {
 		//console.log("passo al service movieId ", movieId);
@@ -66,34 +68,7 @@ export class FavouritesComponent implements OnInit {
 		}
 	}
 
-	checkIfReviewExist(movieId: number, review: Review) {
-		console.log("dentro fav-comp checkIfReviewExist");
-		const userId = this.authService.getCurrentUserId();
-		if (userId !== null) {
-			this.movieService.checkIfReviewExist(userId, movieId).subscribe({
-				next: (response) => {
-					if (response !== null) {
-						this.reviewExist = true;
-						console.log(this.reviewExist);
-					} else {
-						this.addReview(review);
-					}
-				},
-				error: (err) => console.log(err),
-			});
-		}
-	}
 
-	addReview(review: Review) {
-		if (!this.reviewExist) {
-			this.movieService.addReview(review).subscribe({
-				next: (response) => {
-					console.log(response);
-				},
-				error: (err) => console.log(err),
-			});
-		}
-	}
 
   ratingPost(movie : any) {
     this.rankingsService.postRating({
