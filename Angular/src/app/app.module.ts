@@ -37,6 +37,7 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
 import { FilmCardFavouriteComponent } from './components/film-card-favourite/film-card-favourite.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MovieDataComponent } from './components/movie-data/movie-data.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { MatIconModule } from '@angular/material/icon';
     FilmCardTimelineComponent,
     FavouritesComponent,
     FilmCardFavouriteComponent,
+    MovieDataComponent,
   ],
   imports: [
     BrowserModule,

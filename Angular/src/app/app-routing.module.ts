@@ -8,6 +8,7 @@ import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { RankingsComponent } from "./components/rankings/rankings.component";
 import { FavouritesComponent } from "./components/favourites/favourites.component";
+import { MovieDataComponent } from "./components/movie-data/movie-data.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: "rankings", component: RankingsComponent },
       { path: "favourites", component: FavouritesComponent},
       { path: "", redirectTo: "welcome", pathMatch: 'full' },
+      { path: "movie/:id", component: MovieDataComponent},
     ],
   },
   {
